@@ -1,0 +1,2 @@
+migrate create -ext sql -dir <your directory> -seq <name of migartion> # this creates a migartin  file the ext  is the extention of the file seq isgeting sequential naming eg migrate create -ext sql -dir db/migrate -seq init_schema
+

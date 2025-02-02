@@ -1,0 +1,21 @@
+docker exec -it postgresbank psql -U root
+psql (12.22)
+Type "help" for help.
+
+root=# exit
+kingsley@kingsley:~/Desktop/learngo/simplebackend$ docker exec -it postgresbank /bin/sh
+/ # createdb --userame=root --owner=root simplebank
+createdb: unrecognized option: userame=root
+Try "createdb --help" for more information.
+/ # createdb --username=root --owner=root simplebank
+/ # psql simplebank
+psql (12.22)
+Type "help" for help.
+
+simplebank=# \#
+invalid command \#
+Try \? for help.
+simplebank=# \q
+/ # dropdb simplebank
+/ # exit
+kingsley@kingsley:~/Desktop/learngo/simplebackend$ 
