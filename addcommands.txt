@@ -18,4 +18,7 @@ Try \? for help.
 simplebank=# \q
 / # dropdb simplebank
 / # exit
-kingsley@kingsley:~/Desktop/learngo/simplebackend$ 
+kingsley@kingsley:~/Desktop/learngo/simple
+
+mockgen  -package mockdb -destination db/mock/store.go github.com/joekingsleyMukundi/bank/db/sqlc Store
+this is used togeter with mockh=gen to create mock functions  wehave the desination and the other is  the locaion of the store interface alaso the package generares the package name we want
