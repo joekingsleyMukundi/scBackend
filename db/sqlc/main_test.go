@@ -6,6 +6,7 @@ import (
 	"os"
 	"testing"
 
+	"github.com/joekingsleyMukundi/bank/util"
 	_ "github.com/lib/pq"
 )
 
@@ -18,8 +19,11 @@ var testQueries *Queries
 var testDb *sql.DB
 
 func TestMain(m *testing.M) {
-	var err error
-	testDb, err = sql.Open(dbdriver, dbsource)
+	config, err := util.LoadConfig("../..")
+	if err != nil {
+		log.Fatal("connot get config", err)
+	}
+	testDb, err = sql.Open(config.DBDriver, config.DBSource)
 	if err != nil {
 		log.Fatal("connot connect to db error: ", err)
 	}
