@@ -22,3 +22,34 @@ kingsley@kingsley:~/Desktop/learngo/simple
 
 mockgen  -package mockdb -destination db/mock/store.go github.com/joekingsleyMukundi/bank/db/sqlc Store
 this is used togeter with mockh=gen to create mock functions  wehave the desination and the other is  the locaion of the store interface alaso the package generares the package name we want
+
+
+docker rm scbank
+scbank
+kingsley@kingsley:~/Desktop/learngo/simplebackend$ docker run --name scbank -p 8080:8080 -e GIN_MODE=release scbank:latest
+^Ckingsley@kingsley:~/Desktop/learngo/simplebackend$ dockerm scbank
+scbank
+kingsley@kingsley:~/Desktop/learngo/simplebackend$ docker run --name scbank -p 8080:8080 -e GIN_MODE=release -e DB_SOURCE="postgresq
+l://root:secret@172.17.0.2:5432/simple_bank?sslmode=disable" scbank:latest
+^Ckingsley@kingsley:~/Desktop/learngo/simplebackend$ docker rm scbank
+scbank
+kingsley@kingsley:~/Desktop/learngo/simplebackend$ docker network create bank-network postgres12
+"docker network create" requires exactly 1 argument.
+See 'docker network create --help'.
+
+Usage:  docker network create [OPTIONS] NETWORK
+
+Create a network
+kingsley@kingsley:~/Desktop/learngo/simplebackend$ docker network create bank-network 
+cfe265e9051950c90b652f0b1fba4f20d7225af5e1a28ebacd1959931fee6447
+kingsley@kingsley:~/Desktop/learngo/simplebackend$ docker connect bank-network postgres12
+docker: 'connect' is not a docker command.
+See 'docker --help'
+kingsley@kingsley:~/Desktop/learngo/simplebackend$ docker network  connect bank-network postgres12
+kingsley@kingsley:~/Desktop/learngo/simplebackend$ docker run --name scbank --network bank-network -p 8080:8080 -e GIN_MODE=release 
+-e DB_SOURCE="postgresql://root:secret@postgres12:5432/simple_bank?sslmode=disable" scbank:latest
+
+docker container inspect postgres12
+docker network inspect 
+docker network inspect networkname
+
