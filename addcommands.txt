@@ -53,3 +53,10 @@ docker container inspect postgres12
 docker network inspect 
 docker network inspect networkname
 
+chmod +x start.sh 
+kingsley@kingsley:~/Desktop/learngo/simplebackend$ mv ~/Downloads/wait-for ./wait-for.sh
+kingsley@kingsley:~/Desktop/learngo/simplebackend$ chmod +x wait-for.sh 
+kingsley@kingsley:~/Desktop/learngo/simplebackend$ 
+
+
+
