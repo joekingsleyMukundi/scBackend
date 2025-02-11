@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-bank-api-deployment
+  labels:
+    app: scbank-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: scbank-api
+  template:
+    metadata:
+      labels:
+        app: scbank-api
+    spec:
+      containers:
+      - name: scbank-api
+        image: 799812587618.dkr.ecr.eu-west-2.amazonaws.com/scbank:latest
+        ports:
+        - containerPort: 8080
