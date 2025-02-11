@@ -39,11 +39,25 @@ jobs:
       run: |
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -t $REGISTRY/$REPOSITORY:latest .
           docker push -a $REGISTRY/$REPOSITORY
+    
     - name: Update kube config
       run: aws eks update-kubeconfig --name scbank --region eu-west-2
+
+    # ✅ Debug Step: Verify Kubernetes authentication
+    - name: Verify Kubernetes Context
+      run: kubectl config view && kubectl get nodes
+
+    # ✅ Debug Step: Check if aws-auth.yaml exists
+    - name: Check aws-auth.yaml file
+      run: cat eks/aws-auth.yaml || echo "aws-auth.yaml not found!"
+
+    # ✅ Debug Step: Verify EKS Access
+    - name: Test Kubernetes Access
+      run: kubectl get svc || echo "EKS authentication failed!"
+
     - name: Deploy image to EKS
       run: |
-        kubectl apply -f eks/aws-auth.yaml --validate=false
+        kubectl apply -f eks/aws-auth.yaml
         kubectl apply -f eks/deployment.yaml
         kubectl apply -f eks/services.yaml
  
