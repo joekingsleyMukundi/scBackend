@@ -17,5 +17,6 @@ spec:
       containers:
       - name: scbank-api
         image: 799812587618.dkr.ecr.eu-west-2.amazonaws.com/scbank:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
