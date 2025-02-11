@@ -43,7 +43,7 @@ jobs:
       run: aws eks update-kubeconfig --name scbank --region eu-west-2
     - name: Deploy image to EKS
       run: |
-        kubectl apply -f eks/aws-auth.yaml
+        kubectl apply -f eks/aws-auth.yaml --validate=false
         kubectl apply -f eks/deployment.yaml
         kubectl apply -f eks/services.yaml
  
