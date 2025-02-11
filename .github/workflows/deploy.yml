@@ -43,6 +43,10 @@ jobs:
     - name: Update kube config
       run: aws eks update-kubeconfig --name scbank --region eu-west-2
 
+    # ✅ Force authentication to EKS
+    - name: Force Authentication for EKS
+      run: aws eks get-token --cluster-name scbank --region eu-west-2
+      
     # ✅ Debug Step: Verify Kubernetes authentication
     - name: Verify Kubernetes Context
       run: kubectl config view && kubectl get nodes
