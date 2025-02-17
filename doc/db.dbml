@@ -1,4 +1,4 @@
-Project first_project {
+Project Scbank {
   database_type: 'PostgreSQL'
   Note: '''
     # Scbank Database
