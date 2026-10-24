@@ -1,3 +1,4 @@
+migrate create -ext sql -dir db/migration -seq init_schema
 docker exec -it postgresbank psql -U root
 psql (12.22)
 Type "help" for help.
